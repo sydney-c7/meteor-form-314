@@ -6,6 +6,7 @@ import { Tracker } from 'meteor/tracker';
 const StudentData = new Mongo.Collection('StudentData');
 
 const StudentDataValues = {
+  instructor: ['Philip Johnson', 'Cam Moore'],
   hobbies: ['Surfing', 'Running', 'Biking', 'Paddling'],
   levels: ['Freshman', 'Sophomore', 'Junior', 'Senior'],
   majors: ['Physics', 'Math', 'Chemistry', 'Computer Science'],
@@ -15,6 +16,7 @@ const StudentDataValues = {
 const StudentDataSchema = new SimpleSchema({
   name: String,
   email: String,
+  instructor: { type: String, allowedValues: StudentDataValues.instructor },
   bio: { type: String, optional: true, defaultValue: '' },
   hobbies: { type: Array, optional: true },
   'hobbies.$': { type: String, allowedValues: StudentDataValues.hobbies },
